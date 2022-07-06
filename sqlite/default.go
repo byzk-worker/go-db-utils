@@ -21,3 +21,16 @@ func AutoMigrate(v ...interface{}) dbutils.GormCommonInterface {
 func WithContext(callBack func(ctx context.Context) error) error {
 	return client.WithContext(callBack)
 }
+
+func Close() {
+	if client == nil {
+		return
+	}
+
+	db := client.Db()
+	if db != nil {
+		_ = db.Close()
+	}
+
+	client = nil
+}

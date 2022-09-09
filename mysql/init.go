@@ -12,7 +12,9 @@ func Init(url string, getContextFn dbutils.GetContextFn) error {
 	if err := c.Init(); err != nil {
 		return err
 	}
-
+	if client != nil {
+		_ = client.Db().Close()
+	}
 	client = c
 	return nil
 }

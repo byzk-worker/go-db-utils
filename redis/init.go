@@ -8,10 +8,16 @@ import (
 var client *Client
 
 func Init(options *redisV8.Options, getContextFn dbutils.GetContextFn) {
+	if client != nil {
+		_ = client.c.Close()
+	}
 	client = New(options, getContextFn)
 }
 
 func InitWithOptions(options *redisV8.Options) {
+	if client != nil {
+		_ = client.c.Close()
+	}
 	client = New(options, dbutils.DefaultGetContextFn)
 }
 

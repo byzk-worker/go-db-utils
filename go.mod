@@ -4,7 +4,6 @@ go 1.18
 
 require (
 	github.com/go-redis/redis/v8 v8.11.5
-	github.com/jinzhu/gorm v1.9.16
 	gorm.io/driver/mysql v1.4.3
 	gorm.io/driver/sqlite v1.4.3
 	gorm.io/gorm v1.24.1

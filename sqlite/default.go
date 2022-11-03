@@ -3,7 +3,7 @@ package sqlite
 import (
 	"context"
 	dbutils "github.com/byzk-worker/go-db-utils"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 func Db() *gorm.DB {
@@ -29,7 +29,10 @@ func Close() {
 
 	db := client.Db()
 	if db != nil {
-		_ = db.Close()
+		if d, err := db.DB(); err == nil {
+			_ = d.Close()
+		}
+
 	}
 
 	client = nil

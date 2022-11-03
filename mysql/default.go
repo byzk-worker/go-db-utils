@@ -3,7 +3,7 @@ package mysql
 import (
 	"context"
 	dbutils "github.com/byzk-worker/go-db-utils"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 func Db() *gorm.DB {

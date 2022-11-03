@@ -2,7 +2,7 @@ package dbutils
 
 import (
 	"context"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 type GetContextFn func() (context.Context, error)
@@ -23,10 +23,10 @@ type GormCommon struct {
 	CtxFn GetContextFn
 }
 
-func (c *GormCommon) Init(dialect, url string) error {
+func (c *GormCommon) Init(dialect gorm.Dialector, opts ...gorm.Option) error {
 	var err error
 
-	c.db, err = gorm.Open(dialect, url)
+	c.db, err = gorm.Open(dialect, opts...)
 	if err != nil {
 		return err
 	}

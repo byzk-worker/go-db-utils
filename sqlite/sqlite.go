@@ -12,5 +12,5 @@ type Client struct {
 }
 
 func (c *Client) Init() error {
-	return c.GormCommon.Init(sqlite.Open(c.url), &gorm.Config{})
+	return c.GormCommon.Init(sqlite.Open(c.url), &gorm.Config{QueryFields: true})
 }
